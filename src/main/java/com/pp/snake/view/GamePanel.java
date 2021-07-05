@@ -1,9 +1,6 @@
 package com.pp.snake.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
+import java.awt.*;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import javax.swing.JPanel;
