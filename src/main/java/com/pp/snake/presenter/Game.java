@@ -37,7 +37,6 @@ public class Game {
 
   private void tick() {
     frame++;
-    System.out.println(frame);
     if(nextDirection != null) {
       direction = nextDirection;
       nextDirection = null;

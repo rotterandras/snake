@@ -19,22 +19,26 @@ public class Snake {
 
   // haladás adott irányban, a pálya méreteit figyelembe véve- visszaadja a fej új koordinátáját
   public Point move(Direction direction, Supplier<Integer> getWidth, Supplier<Integer> getHeight) {
-    elements.forEach(elem -> elem.setPoint(direction.getNext(elem.getPoint(), getWidth.get(), getHeight.get())));
-    return elements.get(0).getPoint();
+    SnakeElement head = elements.get(0);
+    for (int i = elements.size()-1; i > 0; i--) {
+      Point prevPoint = elements.get(i-1).getPoint();
+      elements.get(i).setPoint(prevPoint.getLocation());
+    }
+    head.setPoint(direction.getNext(head.getPoint(), getWidth, getHeight));
+    return head.getPoint();
   }
+
   // növekedés adott irányban haladva, a pálya méreteit figyelembe véve - visszaadja a fej új koordinátáját
   public Point grow(Direction direction, Supplier<Integer> getWidth, Supplier<Integer> getHeight) {
 
-    Point lastPoint = elements.get(elements.size()-1).getPoint();
+    SnakeElement head = elements.get(0);
 
-    Point newPoint = new Point(lastPoint);
-    newPoint.setLocation(newPoint.getX()-1, newPoint.getY());
+    SnakeElement newElement = new SnakeElement(head.getPoint().getLocation());
+    newElement.setPoint(direction.getNext(newElement.getPoint(), getWidth, getHeight));
 
-    elements.add(new SnakeElement(newPoint));
+    elements.add(0, newElement);
 
-    Point head = elements.get(0).getPoint();
-
-    return head;
+    return newElement.getPoint();
   }
 
   public Stream<SnakeElement> snakeElements() {
