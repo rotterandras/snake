@@ -11,19 +11,43 @@ public enum Direction {
   public Point getNext(Point point, Supplier<Integer> getWidth, Supplier<Integer> getHeight) {
     switch (this) {
       case LEFT:
-        point.setLocation(point.getX()-1, point.getY());
+        moveLeft(point);
         break;
       case RIGHT:
-        point.setLocation(point.getX()+1, point.getY());
+        moveRight(point, getWidth);
         break;
       case UP:
-        point.setLocation(point.getX(), point.getY()-1);
+        moveUp(point);
         break;
       case DOWN:
-        point.setLocation(point.getX(), point.getY()+1);
+        moveDown(point, getHeight);
         break;
     }
     return point;
+  }
+
+  private void moveLeft(Point point) {
+    if (point.getX() != 0) {
+      point.setLocation(point.getX()-1, point.getY());
+    }
+  }
+
+  private void moveRight(Point point, Supplier<Integer> getWidth) {
+    if (point.getX() != getWidth.get()) {
+      point.setLocation(point.getX()+1, point.getY());
+    }
+  }
+
+  private void moveUp(Point point) {
+    if (point.getY() != 0) {
+        point.setLocation(point.getX(), point.getY()-1);
+    }
+  }
+
+  private void moveDown(Point point, Supplier<Integer> getHeight) {
+    if (point.getY() != getHeight.get()) {
+        point.setLocation(point.getX(), point.getY()+1);
+    }
   }
 
 }
