@@ -9,6 +9,7 @@ public class GamePanel extends JPanel {
 
   private final Color BG = new Color(0, 200, 0);
   private final Color SNAKE = new Color(200, 0, 0);
+  private final Color SNAKE_HEAD = new Color(0, 0, 0);
   private final int SIZE = 15;
   private final Supplier<Stream<Point>> getSnakePoints;
   private final Supplier<Integer> getHeight;
@@ -29,6 +30,9 @@ public class GamePanel extends JPanel {
     getSnakePoints.get().forEach(p -> {
       g.fillOval(p.x * SIZE, p.y * SIZE, SIZE, SIZE);
     });
+    Point snakeHead = getSnakePoints.get().findFirst().get();
+    g.setColor(SNAKE_HEAD);
+    g.fillOval(snakeHead.x * SIZE, snakeHead.y * SIZE, SIZE, SIZE);
   }
 
 }

@@ -7,6 +7,21 @@ public enum Direction {
 
   LEFT, RIGHT, UP, DOWN;
 
+  public Direction getOpposite() {
+    switch (this) {
+      case LEFT:
+        return RIGHT;
+      case RIGHT:
+        return LEFT;
+      case UP:
+        return DOWN;
+      case DOWN:
+        return UP;
+      default:
+        return this;
+    }
+  }
+
   // kiszámolja a pálya méreteit figyelembe véve a megfelelő irány szerinti következő koordinátát
   public Point getNext(Point point, Supplier<Integer> getWidth, Supplier<Integer> getHeight) {
     switch (this) {

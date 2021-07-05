@@ -37,6 +37,11 @@ public class Game {
 
   private void tick() {
     frame++;
+
+    // "tolatás" esetén a kígyó nem hal meg csak megy tovább
+    if (nextDirection == direction.getOpposite()) {
+      nextDirection = null;
+    }
     if(nextDirection != null) {
       direction = nextDirection;
       nextDirection = null;
