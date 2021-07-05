@@ -24,7 +24,17 @@ public class Snake {
   }
   // növekedés adott irányban haladva, a pálya méreteit figyelembe véve - visszaadja a fej új koordinátáját
   public Point grow(Direction direction, Supplier<Integer> getWidth, Supplier<Integer> getHeight) {
-    return null;
+
+    Point lastPoint = elements.get(elements.size()-1).getPoint();
+
+    Point newPoint = new Point(lastPoint);
+    newPoint.setLocation(newPoint.getX()-1, newPoint.getY());
+
+    elements.add(new SnakeElement(newPoint));
+
+    Point head = elements.get(0).getPoint();
+
+    return head;
   }
 
   public Stream<SnakeElement> snakeElements() {
