@@ -1,8 +1,6 @@
 
 ;
 gradlew.bat,2/a/2a45a911a8f1836b0b6c5b758962572012d8f8c3
-[
-+src/main/java/com/pp/snake/Application.java,8/8/884de3b6c54aca756c410e5f50679bfe0ac7d103
 _
 /src/main/java/com/pp/snake/model/Direction.java,3/d/3de2251f8b5a690cb24ba714b06524e3e62fac9d
 [
