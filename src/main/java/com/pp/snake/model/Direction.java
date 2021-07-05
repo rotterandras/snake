@@ -42,25 +42,25 @@ public enum Direction {
   }
 
   private void moveLeft(Point point) {
-    if (point.getX() != 0) {
+    if (point.getX() > 0) {
       point.setLocation(point.getX()-1, point.getY());
     }
   }
 
   private void moveRight(Point point, Supplier<Integer> getWidth) {
-    if (point.getX() != getWidth.get()) {
+    if (point.getX() < getWidth.get()-1) {
       point.setLocation(point.getX()+1, point.getY());
     }
   }
 
   private void moveUp(Point point) {
-    if (point.getY() != 0) {
+    if (point.getY() > 0) {
         point.setLocation(point.getX(), point.getY()-1);
     }
   }
 
   private void moveDown(Point point, Supplier<Integer> getHeight) {
-    if (point.getY() != getHeight.get()) {
+    if (point.getY() < getHeight.get()-1) {
         point.setLocation(point.getX(), point.getY()+1);
     }
   }

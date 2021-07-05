@@ -1,20 +1,19 @@
 package com.pp.snake.model;
 
-import java.awt.Point;
-import java.util.ArrayList;
+import java.awt.*;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Snake {
 
   // tartalmazza a SnakeElement-ek gyűjteméenyét
-  private final List<SnakeElement> elements = new ArrayList<>();
+  private final List<SnakeElement> elements = new LinkedList<>();
 
   public Snake(SnakeElement... args) {
-    Arrays.stream(args).forEach(arg -> elements.add(arg));
+    elements.addAll(Arrays.asList(args));
   }
 
   // haladás adott irányban, a pálya méreteit figyelembe véve- visszaadja a fej új koordinátáját
@@ -33,12 +32,12 @@ public class Snake {
 
     SnakeElement head = elements.get(0);
 
-    SnakeElement newElement = new SnakeElement(head.getPoint().getLocation());
-    newElement.setPoint(direction.getNext(newElement.getPoint(), getWidth, getHeight));
+    SnakeElement newHead = new SnakeElement(head.getPoint().getLocation());
+    newHead.setPoint(direction.getNext(newHead.getPoint(), getWidth, getHeight));
 
-    elements.add(0, newElement);
+    elements.add(0, newHead);
 
-    return newElement.getPoint();
+    return newHead.getPoint();
   }
 
   public Stream<SnakeElement> snakeElements() {
