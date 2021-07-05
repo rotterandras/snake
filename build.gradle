@@ -1,0 +1,15 @@
+plugins {
+  id 'application'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = sourceCompatibility
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+  jcenter()
+}
+
+version = '1.0'
+group = 'com.pp'
+mainClassName = 'com.pp.snake.Application'
